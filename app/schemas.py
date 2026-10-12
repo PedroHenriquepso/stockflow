@@ -58,3 +58,23 @@ class VendaOut(BaseModel):
     itens: List[ItemVendaOut]
     class Config:
         from_attributes = True
+
+#-------Usuario-------- 
+class UsuarioBase(BaseModel):
+    nome: str
+    email: str
+
+class UsuarioCreate(UsuarioBase):
+    senha: str
+
+class UsuarioOut(UsuarioBase):
+    id: int
+    ativo: int
+    is_admin: int
+    class Config:
+        from_attributes = True
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+    

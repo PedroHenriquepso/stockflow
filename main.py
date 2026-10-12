@@ -1,15 +1,16 @@
 from fastapi import FastAPI
 from app.database import Base, engine
-from app.routers import produtos, clientes, vendas
+from app.routers import produtos, clientes, vendas, auth
 
 Base.metadata.create_all(bind=engine)
 
-app = FastAPI(title="StockFlow API", version="0.1.0")
+app = FastAPI(title="StockFlow API", version="0.2.0")
 
+app.include_router(auth.router)
 app.include_router(produtos.router)
 app.include_router(clientes.router)
 app.include_router(vendas.router)
 
 @app.get("/")
 def raiz():
-    return {"status": "ok", "sistema": "StockFlow", "versao": "0.1.0"}
+    return {"status": "ok", "sistema": "StockFlow", "versao": "0.2.0"}

@@ -1,4 +1,8 @@
 fastapi
-unicorn[standard]
+uvicorn[standard]
 sqlalchemy
 pydantic
+python-jose[cryptography]
+passlib[bcrypt]
+python-multipart
+bcrypt==4.0.1

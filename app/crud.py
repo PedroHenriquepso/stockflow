@@ -94,3 +94,32 @@ def buscar_venda(db: Session, venda_id: int):
     if not venda:
         raise HTTPException(status_code=404, detail="Venda não encontrada")
     return venda
+
+from app.security import hash_senha, verificar_senha
+
+#---------------USUARIOS----------------
+def criar_usuario(db: Session, dados: schemas.UsuarioCreate):
+    if db.query(models.Usuario).filter(models.Usuario.email == dados.email).first():
+        raise HTTPException(status_code=400, detail="Email já cadastrado")
+
+    usuario = models.Usuario(
+        
+        nome=dados.nome,
+        email=dados.email,
+        senha_hash=hash_senha(dados.senha),
+    )
+    db.add(usuario)
+    db.commit()
+    db.refresh(usuario)
+    return usuario
+
+def buscar_usuario_por_email(db: Session, email: str):
+    return db.query(models.Usuario).filter(models.Usuario.email == email).first()
+
+def autenticar_usuario(db: Session, email: str, senha: str):
+    usuario = buscar_usuario_por_email(db, email)
+    if not usuario:
+        return None
+    if not verificar_senha(senha, usuario.senha_hash):
+        return None
+    return usuario
