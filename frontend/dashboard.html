@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StockFlow — Dashboard</title>
+  <link rel="stylesheet" href="/static/css/estilo.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <h2>StockFlow</h2>
+        <p>Vendas e Estoque</p>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="/dashboard" class="ativo">📊 Dashboard</a>
+        <a href="/produtos">📦 Produtos</a>
+        <a href="/clientes">👥 Clientes</a>
+        <a href="/vendas">💰 Vendas</a>
+      </nav>
+
+      <div class="sidebar-rodape">
+        <button id="botao-sair">Sair</button>
+      </div>
+    </aside>
+
+    <main class="conteudo">
+      <div class="topbar">
+        <h1>Dashboard</h1>
+        <div class="usuario">
+          Logado como <strong id="nome-usuario">—</strong>
+        </div>
+      </div>
+
+      <div class="pagina">
+        <div class="cards">
+          <div class="card">
+            <div class="titulo">Produtos</div>
+            <div class="valor" id="card-produtos">—</div>
+          </div>
+          <div class="card">
+            <div class="titulo">Clientes</div>
+            <div class="valor" id="card-clientes">—</div>
+          </div>
+          <div class="card">
+            <div class="titulo">Vendas</div>
+            <div class="valor" id="card-vendas">—</div>
+          </div>
+        </div>
+
+        <p style="color:#64748b;">Bem-vindo ao StockFlow. Use o menu à esquerda para navegar.</p>
+      </div>
+    </main>
+  </div>
+
+  <script src="/static/js/dashboard.js"></script>
+</body>
+</html>
