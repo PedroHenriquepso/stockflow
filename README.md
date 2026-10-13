@@ -21,10 +21,15 @@ Sistema de vendas e estoque para pequenas e médias empresas.
 - [x] Registro de vendas
 - [x] Baixa automática de estoque
 - [x] Bloqueio de venda sem estoque
-- [ ] Autenticação de usuários
+- [x] Autenticação de usuários (JWT + bcrypt)
+- [x] Rotas protegidas (só usuário logado acessa)
+- [x] Tela de login
+- [x] Dashboard com menu lateral
 - [ ] Movimentações de estoque detalhadas
-- [ ] Relatórios e dashboard
-- [ ] Interface visual
+- [ ] Relatórios e dashboard com dados reais
+- [ ] Tela de produtos
+- [ ] Tela de clientes
+- [ ] Tela de vendas
 - [ ] Emissão fiscal (NF-e/NFC-e)
 
 ## Como rodar localmente
