@@ -20,9 +20,13 @@ def login(
     if not usuario:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Email ou senha incorretos",
+            detail="Usuário ou senha incorretos",
             headers={"WWW-Authenticate": "Bearer"},
         )
 
-    token = criar_token_acesso({"sub": usuario.email})
-    return {"access_token": token, "token_type": "bearer"}
+    token = criar_token_acesso({"sub": usuario.email, "nome": usuario.nome})
+    return {
+        "access_token": token, 
+        "token_type": "bearer",
+        "nome_usuario": usuario.nome  # <--- Enviamos o nome aqui
+    }

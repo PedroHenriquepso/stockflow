@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StockFlow — Produtos</title>
+  <link rel="stylesheet" href="/static/css/estilo.css">
+</head>
+<body>
+  <div class="app">
+    <!-- MENU LATERAL (mesmo do dashboard) -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <h2>StockFlow</h2>
+        <p>Vendas e Estoque</p>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="/produtos" class="ativo">📦 Produtos</a>
+        <a href="/clientes">👥 Clientes</a>
+        <a href="/vendas">💰 Vendas</a>
+      </nav>
+      <div class="sidebar-rodape">
+        <button id="botao-sair">Sair</button>
+      </div>
+    </aside>
+
+    <!-- CONTEÚDO DA PÁGINA -->
+    <main class="conteudo">
+      <div class="topbar">
+        <h1>Produtos</h1>
+        <div class="usuario">
+          Logado como <strong id="nome-usuario">—</strong>
+        </div>
+      </div>
+
+      <div class="pagina">
+        <!-- FORMULÁRIO DE CADASTRO -->
+        <div class="card" style="margin-bottom: 24px;">
+          <h3 style="margin-bottom: 16px;">Novo Produto</h3>
+          
+          <div id="mensagem-feedback" class="mensagem-erro"></div>
+
+          <form id="form-produto" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div class="campo" style="grid-column: span 2;">
+              <label>Nome do Produto</label>
+              <input type="text" id="nome" required>
+            </div>
+            
+            <div class="campo">
+              <label>Código de Barras</label>
+              <input type="text" id="codigo_barras">
+            </div>
+            
+            <div class="campo">
+              <label>Estoque Inicial</label>
+              <input type="number" id="estoque_atual" value="0" required>
+            </div>
+            
+            <div class="campo">
+              <label>Preço de Custo (R$)</label>
+              <input type="number" step="0.01" id="preco_custo" value="0.00" required>
+            </div>
+            
+            <div class="campo">
+              <label>Preço de Venda (R$)</label>
+              <input type="number" step="0.01" id="preco_venda" required>
+            </div>
+
+            <div style="grid-column: span 2;">
+              <button type="submit" class="botao" id="botao-cadastrar">Cadastrar Produto</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- TABELA DE PRODUTOS -->
+        <div class="card">
+          <h3 style="margin-bottom: 16px;">Produtos Cadastrados</h3>
+          <table style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead>
+              <tr style="border-bottom: 2px solid #e2e8f0;">
+                <th style="padding: 12px 8px;">ID</th>
+                <th style="padding: 12px 8px;">Nome</th>
+                <th style="padding: 12px 8px;">Custo</th>
+                <th style="padding: 12px 8px;">Venda</th>
+                <th style="padding: 12px 8px;">Estoque</th>
+                <th style="padding: 12px 8px;">Ações</th>
+              </tr>
+            </thead>
+            <tbody id="tabela-produtos">
+              <!-- O JavaScript vai preencher isso aqui -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="/static/js/produtos.js"></script>
+    <script src="/static/js/global.js"></script>
+  <script src="/static/js/produtos.js"></script>
+</body>
+</html>

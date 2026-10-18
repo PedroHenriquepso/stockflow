@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StockFlow — Novo Orçamento</title>
+  <link rel="stylesheet" href="/static/css/estilo.css">
+</head>
+<body>
+  <div class="app">
+    <!-- MENU LATERAL -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <h2>StockFlow</h2>
+        <p>Vendas e Estoque</p>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="/produtos">📦 Produtos</a>
+        <a href="/clientes">👥 Clientes</a>
+        <a href="/orcamentos" class="ativo">📝 Orçamentos</a>
+        <a href="/vendas">💰 Vendas</a>
+      </nav>
+      <div class="sidebar-rodape">
+        <button id="botao-sair">Sair</button>
+      </div>
+    </aside>
+
+    <!-- CONTEÚDO -->
+    <main class="conteudo">
+      <div class="topbar">
+        <h1>Novo Orçamento</h1>
+        <div class="usuario">Logado como <strong id="nome-usuario">—</strong></div>
+      </div>
+
+      <div class="pagina">
+        <!-- CABEÇALHO DO ORÇAMENTO -->
+        <div class="card" style="margin-bottom: 20px; display: flex; gap: 20px;">
+          <div class="campo" style="flex: 1;">
+            <label>Cliente (Buscar por ID ou Nome)</label>
+            <input type="text" id="busca-cliente" placeholder="Digite o nome ou deixe em branco para Consumidor">
+            <input type="hidden" id="cliente-id" value="1">
+            <small id="cliente-nome" style="color: #2563eb; font-weight: bold;">CONSUMIDOR PADRÃO</small>
+          </div>
+          
+          <div class="campo" style="flex: 1;">
+            <label>Veículo (Placa/Modelo)</label>
+            <input type="text" id="busca-veiculo" placeholder="Ex: ABC1234">
+            <input type="hidden" id="veiculo-id" value="">
+          </div>
+        </div>
+
+        <!-- ADICIONAR PRODUTO -->
+        <div class="card" style="margin-bottom: 20px; display: flex; gap: 20px; background: #eff6ff;">
+          <div class="campo" style="flex: 1; position: relative;">
+            <label>Adicionar Peça (Código Interno ou Nome)</label>
+            <input type="text" id="busca-produto" placeholder="Digite o código ou nome da peça" autocomplete="off">
+            <div id="sugestoes-produto" style="background: white; border: 1px solid #ccc; position: absolute; z-index: 10; width: 100%; display: none;"></div>
+          </div>
+          
+          <div class="campo" style="width: 100px;">
+            <label>Qtd</label>
+            <input type="number" id="qtd-produto" value="1" min="1">
+          </div>
+          
+          <div style="display: flex; align-items: flex-end; padding-bottom: 12px;">
+            <button class="botao" id="botao-adicionar" style="width: auto; padding: 10px 20px;">Adicionar</button>
+          </div>
+        </div>
+
+        <!-- TABELA DE ITENS -->
+        <div class="card">
+          <table style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead>
+              <tr style="border-bottom: 2px solid #e2e8f0; font-size: 14px;">
+                <th style="padding: 10px;">Cód</th>
+                <th style="padding: 10px;">Descrição</th>
+                <th style="padding: 10px;">Qtd</th>
+                <th style="padding: 10px;">Unitário</th>
+                <th style="padding: 10px;">Total</th>
+                <th style="padding: 10px;">Ação</th>
+              </tr>
+            </thead>
+            <tbody id="tabela-itens">
+              <!-- JS vai preencher aqui -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- TOTAIS E DESCONTO -->
+        <div class="card" style="margin-top: 20px; display: flex; justify-content: flex-end; align-items: center; gap: 20px;">
+          <div>
+            <label style="font-size: 12px; color: #64748b;">Desconto (%)</label>
+            <input type="number" id="desconto-porcentagem" value="0" min="0" step="0.1" style="width: 80px; padding: 8px;">
+          </div>
+          <div>
+            <label style="font-size: 12px; color: #64748b;">Desconto (R$)</label>
+            <input type="number" id="desconto-valor" value="0" min="0" step="0.01" style="width: 100px; padding: 8px;">
+          </div>
+          <div style="text-align: right; margin-left: 20px;">
+            <div style="font-size: 14px; color: #64748b;">Valor Bruto: <span id="total-bruto">R$ 0,00</span></div>
+            <div style="font-size: 24px; font-weight: bold; color: #2563eb;">Total: <span id="total-final">R$ 0,00</span></div>
+          </div>
+        </div>
+
+        <div style="margin-top: 20px; display: flex; gap: 10px;">
+          <button class="botao" id="botao-salvar" style="background: #16a34a; font-size: 16px; padding: 15px;">SALVAR ORÇAMENTO</button>
+          <button class="botao" id="botao-voltar" style="background: #94a3b8; font-size: 16px; padding: 15px;" onclick="window.location.href='/orcamentos'">CANCELAR</button>
+        </div>
+      </div>
+    </main>
+  </div>
+  
+  <!-- Importa o global e o JavaScript específico do formulário -->
+  <script src="/static/js/global.js?v=4"></script>
+  <script src="/static/js/orcamentos.js?v=4"></script>
+</body>
+</html>

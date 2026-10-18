@@ -6,7 +6,7 @@ if (!token) {
 
 // 2. Mostra o email do usuário logado no canto superior
 const email = localStorage.getItem("email") || "usuário";
-document.getElementById("nome-usuario").textContent = email;
+document.getElementById("nome-usuario").textContent = localStorage.getItem("nome_usuario") || "Vendedor";
 
 // 3. Botão "Sair": apaga o token e volta para o login
 document.getElementById("botao-sair").addEventListener("click", () => {

@@ -11,7 +11,6 @@ document.getElementById("form-login").addEventListener("submit", async (evento) 
   botao.textContent = "Entrando...";
 
   try {
-    // O FastAPI espera os dados como formulário (form-urlencoded), não JSON
     const corpo = new URLSearchParams();
     corpo.append("username", email);
     corpo.append("password", senha);
@@ -24,16 +23,21 @@ document.getElementById("form-login").addEventListener("submit", async (evento) 
 
     if (!resposta.ok) {
       if (resposta.status === 401) {
-        throw new Error("Email ou senha incorretos");
+        throw new Error("Usuário ou senha incorretos");
       }
       throw new Error("Erro ao fazer login. Tente novamente.");
     }
 
     const dados = await resposta.json();
+    
+    // Salva o token
     localStorage.setItem("token", dados.access_token);
-    localStorage.setItem("email", email);
+    
+    // Salva o nome que o backend enviou direto na resposta
+    localStorage.setItem("nome_usuario", dados.nome_usuario);
 
     window.location.href = "/dashboard";
+
   } catch (e) {
     erro.textContent = e.message;
     erro.classList.add("visivel");
